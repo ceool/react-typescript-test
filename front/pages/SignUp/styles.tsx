@@ -111,3 +111,8 @@ export const LinkContainer = styled.p`
     }
   }
 `;
+
+export const Select = styled.select`
+  width: 200px; /* 원하는 너비설정 */
+  padding: 0.8em 0.5em; /* 여백으로 높이 설정 */
+`;

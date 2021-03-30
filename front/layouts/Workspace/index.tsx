@@ -2,6 +2,7 @@ import ChannelList from '@components/ChannelList';
 import CreateChannelModal from '@components/CreateChannelModal';
 import DMList from '@components/DMList';
 import InviteWorkspaceModal from '@components/InviteWorkspaceModal';
+import KickWorkspaceModal from '@components/KickWorkspaceModal';
 import Menu from '@components/Menu';
 import Modal from '@components/Modal';
 import useInput from '@hooks/useInput';
@@ -50,6 +51,7 @@ const Workspace = () => {
   const [showCreateWorkspaceModal, setShowCreateWorkspaceModal] = useState(false);
   const [showInviteWorkspaceModal, setShowInviteWorkspaceModal] = useState(false);
   const [showCreateChannelModal, setShowCreateChannelModal] = useState(false);
+  const [showKickWorkspaceModal, setShowKickWorkspaceModal] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showWorkspaceModal, setShowWorkspaceModal] = useState(false);
   const [newWorkspace, onChangeNewWorkspace, setNewWorkspace] = useInput('');
@@ -107,10 +109,15 @@ const Workspace = () => {
     setShowInviteWorkspaceModal(true);
   }, []);
 
+  const onClickKickWorkspace = useCallback(() => {
+    setShowKickWorkspaceModal(true);
+  }, []);
+
   const onCloseModal = useCallback(() => {
     setShowCreateWorkspaceModal(false);
     setShowCreateChannelModal(false);
     setShowInviteWorkspaceModal(false);
+    setShowKickWorkspaceModal(false);
   }, []);
 
   const onClickUserProfile = useCallback(() => {
@@ -182,6 +189,7 @@ const Workspace = () => {
                 <h2>{userData?.Workspaces.find((v) => v.url === workspace)?.name}</h2>
                 <button onClick={onClickInviteWorkspace}>워크스페이스에 사용자 초대</button>
                 <button onClick={onClickAddChannel}>채널 만들기</button>
+                <button onClick={onClickKickWorkspace}>사용자 삭제</button>
                 <button onClick={onLogOut}>로그아웃</button>
               </WorkspaceModal>
             </Menu>
@@ -218,6 +226,11 @@ const Workspace = () => {
         show={showInviteWorkspaceModal}
         onCloseModal={onCloseModal}
         setShowInviteWorkspaceModal={setShowInviteWorkspaceModal}
+      />
+      <KickWorkspaceModal
+        show={showKickWorkspaceModal}
+        onCloseModal={onCloseModal}
+        setShowKickWorkspaceModal={setShowKickWorkspaceModal}
       />
       <ToastContainer position="bottom-center" />
     </div>

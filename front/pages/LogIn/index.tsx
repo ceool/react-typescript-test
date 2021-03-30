@@ -3,7 +3,7 @@ import { Button, Error, Form, Header, Input, Label, LinkContainer } from '@pages
 import fetcher from '@utils/fetcher';
 import axios from 'axios';
 import React, { useCallback, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import useSWR from 'swr';
 
 const LogIn = () => {
@@ -28,6 +28,7 @@ const LogIn = () => {
         })
         .catch((error) => {
           setLogInError(error.response?.data?.statusCode === 401);
+          setLogInError(true);
         });
     },
     [email, password],

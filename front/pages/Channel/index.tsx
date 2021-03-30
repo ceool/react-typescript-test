@@ -188,15 +188,6 @@ const Channel = () => {
           >
             <i className="c-icon p-ia__view_header__button_icon c-icon--add-user" aria-hidden="true" />
           </button>
-          <button
-            onClick={onClickInviteChannel}
-            className="c-button-unstyled p-ia__view_header__button"
-            aria-label="Add people to #react-native"
-            data-sk="tooltip_parent"
-            type="button"
-          >
-            <i className="c-icon p-ia__view_header__button_icon c-icon--add-user" aria-hidden="true" />
-          </button>
         </div>
       </Header>
       <ChatList

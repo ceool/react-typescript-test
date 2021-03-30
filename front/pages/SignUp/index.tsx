@@ -54,6 +54,10 @@ const SignUp = () => {
     [email, nickname, password, mismatchError],
   );
 
+  if (signUpSuccess) {
+    alert('회원가입되었습니다! 로그인해주세요.');
+    return <Redirect to="/login" />;
+  }
   if (userData) {
     return <Redirect to="/workspace/sleact" />;
   }
